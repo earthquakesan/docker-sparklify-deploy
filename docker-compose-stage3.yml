@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  hive-server:
+    image: bde2020/hive:2.1.0-postgresql-metastore
+    container_name: hive-server
+    networks:
+      - sparklify
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      - "HIVE_CORE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://hive-metastore/metastore"
+    ports:
+      - "10000:10000"
+
+networks:
+  sparklify:
+    external:
+      name: sparklify
