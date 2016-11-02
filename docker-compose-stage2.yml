@@ -10,6 +10,7 @@ services:
       - ./data/datanode:/hadoop/dfs/data
     env_file:
       - ./hadoop-hive.env
+    restart: always
   spark-worker:
     image: bde2020/spark-worker:2.0.0-hadoop2.7-hive
     container_name: spark-worker
@@ -21,6 +22,7 @@ services:
       - "8081:8081"
     env_file:
       - ./hadoop-hive.env
+    restart: always
   hive-metastore:
     image: bde2020/hive:2.1.0-postgresql-metastore
     container_name: hive-metastore
@@ -29,6 +31,7 @@ services:
     env_file:
       - ./hadoop-hive.env
     command: /opt/hive/bin/hive --service metastore
+    restart: always
 
 networks:
   sparklify:
