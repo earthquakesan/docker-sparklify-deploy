@@ -9,3 +9,8 @@ Before proceeding to start the next stage make sure that the services from the p
   docker-compose -f docker-compose-stage2.yml up -d
   docker-compose -f docker-compose-stage3.yml up -d
 ```
+
+Run beeline client:
+```
+docker exec -it hive-server /opt/hive/bin/beeline -u jdbc:hive2://localhost:10000
+```
